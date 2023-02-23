@@ -44,25 +44,43 @@ int main() {
             cout << "\n\nThe moral of the story?... Be careful";
             cout << "\n--------------------leaving MAD LIBS game-----------------------------------------------\n";
         } else if (choice == 2) {
-            Adventure::message();
-            char ask = 'y';
-            string adventure_name = Adventure::get_character();
-            cout << " Once upon a time, there was a brave adventurer " << adventure_name;
-            cout << " who lived in a world filled with dangerous monsters that was harming a town.\n";
-            // TODO fix y/n so that input is validated
-            cout << " Would you like to go defeat the monsters [y/n]:";
-            ask = Adventure::get_char_input(cout, cin);
-            while (ask != 'y' || ask != 'n')
-                ask = Adventure::get_char_input(cout, cin);
-            if (ask == 'y') {
-                cout << "The town hears how brave you are and hope for your safety." << endl;
-                cin >> ask;
-            } else if (ask == 'n') {
-                cout << "The town hears how you ran away like a coward." << endl;
-                cout<< "\n--------------------leaving Adventurer game-----------------------------------------------\n";
-                cin.ignore(1);
-            }
+            Adventure game;
 
+            //Game intro
+            cout << "\nYou've arrived to the Adventure game!\n" << endl;
+            cout << "Respond to the following question to contribute with your Adventure:\n" << endl;
+            string character = game.get_character();
+            cout << "Your goal is to defeat the monsters that have taken over the kingdom." << endl;
+            cout << "Legend has it that the monsters have been terrorizing the kingdom for years." << endl;
+            cout << "The king has promised a reward to anyone who can defeat them and restore peace to the kingdom." << endl;
+            cout << "Are you brave enough, " << character << ", to take on this quest? Let's find out!\n" << endl;
+
+            char choice;
+            int monster_life = 3; // setting monster's life to 3
+            cout << "You encounter a ferocious goblin monster with " << monster_life << " life. Do you want to fight? (y/n)" << endl;            choice = game.get_char_input(cout, cin);
+            if (choice == 'y') {
+                while (monster_life > 0) { // loop until monster's life reaches 0
+                    int attack = game.get_attack();
+                    switch (attack) {
+                        case 1:
+                            cout << character << " kicks the monster!" << endl;
+                            monster_life-= 1;
+                            break;
+                        case 2:
+                            cout << character << " punches the monster!" << endl;
+                            monster_life-= 1;
+                            break;
+                        case 3:
+                            cout << character << " casts a fireball spell at the monster!" << endl;
+                            monster_life-= 2;
+                            break;
+                    }
+                    cout << "The monster has " << monster_life << " life remaining." << endl;
+                }
+                cout << "Congratulations! You defeated the monster!" << endl;
+            } else {
+                cout << "You turn around and run away!" << endl;
+            }
         }
     }
     return 0;

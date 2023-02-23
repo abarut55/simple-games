@@ -1,6 +1,3 @@
-//
-// Created by Abdullah Barut on 2/2/23.
-//
 
 #include "adventure.h"
 #include <iostream>
@@ -13,12 +10,6 @@ using namespace std;
 /************* MadLibs class ******************/
 
 Adventure::Adventure() = default;
-
-void Adventure::message() {
-    cout << "_____________________________________________________________________________________" << endl;
-    cout << "\nYou've arrived to the Adventure game!\n" << endl;
-    cout << "Respond to the following question to contribute with your Adventure:\n" << endl;
-}
 
 string Adventure::get_character() {
     string name;
@@ -72,18 +63,16 @@ int Adventure::get_attack() {
 char Adventure::get_char_input(ostream &outs, istream &ins) {
     string value[] = {"y", "n"};
     string choice;
-    ins >> choice;
-    getline(cin, choice);
+    getline(ins, choice);
     while (choice.length() != 1 || find(begin(value), end(value), choice) == end(value)) {
         if (choice.empty()) {
-            cout << "No input. Enter a single character: ";
+            outs << "No input. Enter a single character: ";
+            getline(ins, choice);
+        } else {
+            outs << endl << "Invalid option try again: " << endl;
             getline(ins, choice);
         }
-        outs << endl << "Invalid option try again: " << endl;
-        getline(ins, choice);
-        ins >> choice;
     }
-    return (char) choice[0];
+    return choice[0];
 }
-
 

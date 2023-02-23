@@ -18,13 +18,6 @@ public:
     Adventure();
 
     /*
-     * Get nothing
-     * Requires: nothing
-     * Modifies: prints the message
-     */
-    static void message();
-
-    /*
      * Get number from user for attack
      * Requires: int num
      * Modifies: num to choice the one of the four skills
