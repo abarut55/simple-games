@@ -4,22 +4,11 @@
 
 #include "Monster.h"
 
-Monster::Monster(std::string name, int health, int attack) :
-        mon_name{name},
-        mon_health{health},
-        mon_attack{attack}
-{}
+Monster::Monster(int health) :
+        mon_health{health} {}
 
-std::string Monster::getName() const {
-    return mon_name;
-}
-
-int Monster::getHealth() const {
+int Monster::getHealth() {
     return mon_health;
-}
-
-int Monster::getAttack() const {
-    return mon_attack;
 }
 
 void Monster::takeDamage(int damage) {

@@ -7,7 +7,7 @@
 #include "arcade.h"
 #include "madlibs.h"
 #include "adventure.h"
-
+#include "Monster.h"
 
 using namespace std;
 
@@ -52,32 +52,64 @@ int main() {
             string character = game.get_character();
             cout << "Your goal is to defeat the monsters that have taken over the kingdom." << endl;
             cout << "Legend has it that the monsters have been terrorizing the kingdom for years." << endl;
-            cout << "The king has promised a reward to anyone who can defeat them and restore peace to the kingdom." << endl;
+            cout << "The king has promised a reward to anyone who can defeat them and restore peace to the kingdom."
+                 << endl;
             cout << "Are you brave enough, " << character << ", to take on this quest? Let's find out!\n" << endl;
 
-            char choice;
-            int monster_life = 3; // setting monster's life to 3
-            cout << "You encounter a ferocious goblin monster with " << monster_life << " life. Do you want to fight? (y/n)" << endl;            choice = game.get_char_input(cout, cin);
-            if (choice == 'y') {
-                while (monster_life > 0) { // loop until monster's life reaches 0
-                    int attack = game.get_attack();
+            int life = game.get_life();
+            std::cout << "Your starting life is: " << life << std::endl;
+
+            char adven_choice;
+            Monster monster(3);
+            int monsterLife = monster.getHealth();
+            cout << "You encounter a ferocious goblin monster with " << monster.getHealth()
+                 << " life. Do you want to fight? (y/n)" << endl;
+            adven_choice = Adventure::get_char_input(cout, cin);
+            if (adven_choice == 'y') {
+                while (monster.getHealth() > 0) { // loop until monster's life reaches 0
+                    int attack = Adventure::get_attack();
                     switch (attack) {
                         case 1:
                             cout << character << " kicks the monster!" << endl;
-                            monster_life-= 1;
+                            monster.takeDamage(1);
                             break;
                         case 2:
                             cout << character << " punches the monster!" << endl;
-                            monster_life-= 1;
+                            monster.takeDamage(1);
                             break;
                         case 3:
                             cout << character << " casts a fireball spell at the monster!" << endl;
-                            monster_life-= 2;
+                            monster.takeDamage(2);
                             break;
                     }
-                    cout << "The monster has " << monster_life << " life remaining." << endl;
+                    if (monster.getHealth() <= 0) {
+                        cout << "Congratulations! You defeated the monster!" << endl;
+                        break;
+                    }
+                     cout << "Monster's health: " << monster.getHealth() << endl;
+                    // monster's attack
+                    int monster_attack = rand() % 3 + 1; // generate a random number between 1 and 3
+                    switch (monster_attack) {
+                        case 1:
+                            cout << "The monster bites you!" << endl;
+                            life -= 10;
+                            break;
+                        case 2:
+                            cout << "The monster claws you!" << endl;
+                            life -= 30;
+                            break;
+                        case 3:
+                            cout << "The monster spits poison at you!" << endl;
+                            life -= 50;
+                            break;
+                    }
+                    cout << "Your life is now " << life << "." << endl;
+
+                    if (life <= 0) {
+                        cout << "You have died!" << endl;
+                        break;
+                    }
                 }
-                cout << "Congratulations! You defeated the monster!" << endl;
             } else {
                 cout << "You turn around and run away!" << endl;
             }

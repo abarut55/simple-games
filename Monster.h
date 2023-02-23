@@ -9,16 +9,12 @@
 
 class Monster {
 public:
-    Monster(std::string name, int health, int attack);
-    std::string getName() const;
-    int getHealth() const;
-    int getAttack() const;
+    Monster(int health);
+    int getHealth();
     void takeDamage(int damage);
 
 private:
-    std::string mon_name;
     int mon_health;
-    int mon_attack;
 };
 
 #endif //M2OEP_ABARUT_MONSTER_H

@@ -13,3 +13,10 @@ add_executable(M2OEP_abarut
         adventure.cpp
         Monster.cpp
         Monster.h)
+
+add_executable(test_M2OEP_abarut
+        test.cpp
+        adventure.cpp
+        adventure.h
+        Monster.cpp
+        Monster.h)

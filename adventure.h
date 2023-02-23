@@ -10,10 +10,13 @@
 using namespace std;
 
 class Adventure {
+private:
+    int life = 100; // set initial life to 100
 public:
     /*
     * Default Constructor
     * Requires: nothing
+    * Initializes characterName and attackPower to default values
     */
     Adventure();
 
@@ -39,6 +42,13 @@ public:
      */
     static char get_char_input(std::ostream &outs, std::istream &ins);
 
+    /*
+     * Get user's current life
+     * Requires: nothing
+     * Modifies: nothing
+     * Returns: int representing user's life
+     */
+    int get_life();
 };
 
 

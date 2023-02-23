@@ -1,15 +1,12 @@
-
 #include "adventure.h"
 #include <iostream>
 #include <regex>
 
-
 using namespace std;
 
+/************* Adventure class ******************/
 
-/************* MadLibs class ******************/
-
-Adventure::Adventure() = default;
+Adventure::Adventure() : life(100) {}
 
 string Adventure::get_character() {
     string name;
@@ -74,5 +71,9 @@ char Adventure::get_char_input(ostream &outs, istream &ins) {
         }
     }
     return choice[0];
+}
+
+int Adventure::get_life() {
+    return life;
 }
 
