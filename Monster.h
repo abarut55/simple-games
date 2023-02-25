@@ -9,9 +9,11 @@
 
 class Monster {
 public:
+    Monster();
+
     Monster(int health);
-    int getHealth();
-    void takeDamage(int damage);
+    int get_health();
+    int take_damage(int damage);
 
 private:
     int mon_health;

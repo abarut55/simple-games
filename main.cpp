@@ -61,32 +61,32 @@ int main() {
 
             char adven_choice;
             Monster monster(3);
-            int monsterLife = monster.getHealth();
-            cout << "You encounter a ferocious goblin monster with " << monster.getHealth()
+            int monsterLife = monster.get_health();
+            cout << "You encounter a ferocious goblin monster with " << monster.get_health()
                  << " life. Do you want to fight? (y/n)" << endl;
             adven_choice = Adventure::get_char_input(cout, cin);
             if (adven_choice == 'y') {
-                while (monster.getHealth() > 0) { // loop until monster's life reaches 0
+                while (monster.get_health() > 0) { // loop until monster's life reaches 0
                     int attack = Adventure::get_attack();
                     switch (attack) {
                         case 1:
                             cout << character << " kicks the monster!" << endl;
-                            monster.takeDamage(1);
+                            monster.take_damage(1);
                             break;
                         case 2:
                             cout << character << " punches the monster!" << endl;
-                            monster.takeDamage(1);
+                            monster.take_damage(1);
                             break;
                         case 3:
                             cout << character << " casts a fireball spell at the monster!" << endl;
-                            monster.takeDamage(2);
+                            monster.take_damage(2);
                             break;
                     }
-                    if (monster.getHealth() <= 0) {
+                    if (monster.get_health() <= 0) {
                         cout << "Congratulations! You defeated the monster!" << endl;
                         break;
                     }
-                     cout << "Monster's health: " << monster.getHealth() << endl;
+                     cout << "Monster's health: " << monster.get_health() << endl;
                     // monster's attack
                     int monster_attack = rand() % 3 + 1; // generate a random number between 1 and 3
                     switch (monster_attack) {

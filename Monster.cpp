@@ -4,13 +4,17 @@
 
 #include "Monster.h"
 
+
+Monster::Monster() = default;
+
 Monster::Monster(int health) :
         mon_health{health} {}
 
-int Monster::getHealth() {
+int Monster::get_health() {
     return mon_health;
 }
 
-void Monster::takeDamage(int damage) {
+int Monster::take_damage(int damage) {
     mon_health -= damage;
+    return mon_health;
 }
