@@ -25,8 +25,7 @@ all-time favorite old-school games. But this time I am mainly forcing on the adv
 
 Bugs that need to be fixed:
 
-* In the adventure game the game is not complete
-* Also in the adventure game the game has some logic errors also some input validation
+* The madlibs.txt shows up in cmake-build folder
 
 ## Future Work
 
