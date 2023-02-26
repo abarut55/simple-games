@@ -8,6 +8,8 @@
 #include "madlibs.h"
 #include "adventure.h"
 #include "Monster.h"
+#include <fstream>
+#include <iostream>
 
 using namespace std;
 
@@ -19,30 +21,31 @@ int main() {
     ARCADE_Shop::print_intro(cout);
     ARCADE_Shop::print_menu(cout);
 
-    // fix this loop
+
     while (choice != 4) {
         choice = ARCADE_Shop::get_player_opinion(cout, cin);
-
-        if (choice == 1) {
+        ofstream outfile("madlibs.txt", std::ofstream::trunc); // create output file stream
+        if (choice == 1 && outfile.is_open()) {
             MadLibs::message();
             string name = MadLibs::get_name();
             string noun = MadLibs::get_noun();
             string celebrity = MadLibs::get_celebrity();
             int number = MadLibs::get_number();
-            cout << "\nHere's your story:";
-            cout << "\nThe well-known crazy person " << name;
-            cout << " has embarked on a new mission with their new companion and ex-lover " << celebrity;
-            cout << ". \nTo defeat the scariest " << noun << "'s";
-            cout << " when one day, as they where walking a " << noun;
-            cout << " hit you in the face.\n\n";
-            cout << "when you got up there was " << number << " " << noun;
-            cout << ", you and your " << celebrity << " started to run screaming at each other when " << celebrity;
-            cout << " started to go crazy and started to slap the " << noun << "'s.\nAs you where fighting "
+            outfile << "\nHere's your story:";
+            outfile << "\nThe well-known crazy person " << name;
+            outfile << " has embarked on a new mission with their new companion and ex-lover " << celebrity;
+            outfile << ". \nTo defeat the scariest " << noun << "'s";
+            outfile << " when one day, as they where walking a " << noun;
+            outfile << " hit you in the face.\n\n";
+            outfile << "when you got up there was " << number << " " << noun;
+            outfile << ", you and your " << celebrity << " started to run screaming at each other when " << celebrity;
+            outfile << " started to go crazy and started to slap the " << noun << "'s.\nAs you where fighting "
                  << celebrity;
-            cout << " accidental slaps a " << noun << " your way. \nYou couldn't dodge the " << noun;
-            cout << ". You pass away! ";
-            cout << "\n\nThe moral of the story?... Be careful";
-            cout << "\n--------------------leaving MAD LIBS game-----------------------------------------------\n";
+            outfile << " accidental slaps a " << noun << " your way. \nYou couldn't dodge the " << noun;
+            outfile << ". You pass away! ";
+            outfile << "\n\nThe moral of the story?... Be careful";
+            outfile.close(); // close the output file stream
+            cout << "\n--------------------Check file madlibs.txt-----------------------------------------------\n";
         } else if (choice == 2) {
             Adventure game;
 
