@@ -4,7 +4,9 @@
 
 ## Description
 
-Simple-Game is a C++ project I'm currently developing that features several adventure game options for players to choose from. It's designed to run on both Mac and Windows operating systems, and I've implemented input validation and error handling to ensure a smooth gaming experience. In the future, I plan to add new features to enhance gameplay and explore options for making the game accessible outside of the command line.
+Simple-Game is a C++ project I'm currently developing that features several adventure game options for players to choose from. It's designed to run on both Mac and Windows operating systems, and I've implemented input validation and error handling to ensure a smooth gaming experience. 
+
+The game's clones are derived from a previous project I worked on, which has helped me develop my programming skills. In the future, I plan to add new features to enhance gameplay and explore options for making the game accessible outside of the command line.
 
 ## Getting Started
 
